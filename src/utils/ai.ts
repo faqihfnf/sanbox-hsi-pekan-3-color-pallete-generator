@@ -12,7 +12,7 @@ const openai = new OpenAI({
 export async function describeColorPalette(palette: string[]) {
   const prompt = `Given this color palette: ${palette.join(
     ", ",
-  )}, describe the overall mood it conveys and suggest 2-3 usage scenarios. Please feedback in Bahasa Indonesia. Respond only in JSON format like: {"mood":"...", "usage_scenarios":["...","..."]}`;
+  )}, describe the overall mood it conveys and suggest 2-3 usage scenarios. Please feedback always in Bahasa Indonesia at mood and usage scenarios. Respond only in JSON format like: {"mood":"...", "usage_scenarios":["...","..."]}`;
 
   const completion = await openai.chat.completions.create({
     model: "mistralai/mistral-7b-instruct:free",
