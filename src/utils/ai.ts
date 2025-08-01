@@ -2,25 +2,26 @@ import OpenAI from "openai";
 
 const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENROUTER_API_KEY,
   defaultHeaders: {
     "HTTP-Referer": process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
     "X-Title": "Pallete Color Generator",
   },
 });
 
-async function main() {
+export async function describeColorPalette(palette: string[]) {
+  const prompt = `Given this color palette: ${palette.join(", ")}, describe the overall mood it conveys and suggest 2-3 usage scenarios. Please feedback in Bahasa Indonesia. Respond in JSON format like this: {"mood":"...", "usage_scenarios":["...","..."]}`;
+
   const completion = await openai.chat.completions.create({
     model: "mistralai/mistral-7b-instruct:free",
     messages: [
       {
         role: "user",
-        content: "What is the meaning of life?",
+        content: prompt,
       },
     ],
   });
 
-  console.log(completion.choices[0].message);
+  const raw = completion.choices[0].message.content || "{}";
+  return JSON.parse(raw);
 }
-
-main();
