@@ -119,10 +119,12 @@ function ColorPallete() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-slate-900 p-4 font-sans">
-      <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold text-white">Generator Palet Warna</h1>
-        <p className="mt-2 text-slate-400">
-          Klik tombol untuk mendapatkan kombinasi warna baru.
+      <div className="mb-5 text-center">
+        <h1 className="text-5xl font-bold text-white">
+          Color Pallete Generator
+        </h1>
+        <p className="mt-2 text-lg text-slate-300">
+          Generate random color pallete and describe it with AI in one click
         </p>
       </div>
 
@@ -131,15 +133,15 @@ function ColorPallete() {
           onClick={handleGeneratePallete}
           className="cursor-pointer rounded-lg bg-indigo-600 px-8 py-3 text-lg font-semibold text-white shadow-md shadow-teal-400 transition-transform hover:scale-105 hover:bg-indigo-700"
         >
-          Generate Palette
+          🎨 Generate Palette
         </button>
 
         <button
           onClick={handleDescribePalette}
           disabled={pallete.length === 0 || loading}
-          className="cursor-pointer rounded-lg bg-purple-600 px-8 py-3 text-lg font-semibold text-white shadow-md shadow-teal-400 transition-transform hover:scale-105 hover:bg-purple-700 disabled:cursor-not-allowed disabled:opacity-50"
+          className="cursor-pointer rounded-lg bg-fuchsia-600 px-8 py-3 text-lg font-semibold text-white shadow-md shadow-teal-400 transition-transform hover:scale-105 hover:bg-fuchsia-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {loading ? "⏳ Generating..." : "✨ Generate AI"}
+          {loading ? "⌛ Generating..." : "✨ Describe with AI"}
         </button>
       </div>
 
@@ -153,7 +155,7 @@ function ColorPallete() {
             {/* Copy Icon */}
             <button
               onClick={() => handleCopyToClipboard(color, index)}
-              className="hover:bg-opacity-20 absolute top-1 right-1 cursor-pointer rounded-lg p-1 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-indigo-500"
+              className="hover:bg-opacity-20 absolute top-1 right-1 cursor-pointer rounded-md p-1 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-indigo-500"
             >
               {copiedStates[index] ? (
                 <Check className="h-4 w-4 text-white" />
@@ -165,7 +167,7 @@ function ColorPallete() {
             {/* Lock/Unlock Icon */}
             <button
               onClick={() => handleToggleLock(index)}
-              className="hover:bg-opacity-20 absolute top-1 left-1 cursor-pointer rounded-lg p-1 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-indigo-500"
+              className="hover:bg-opacity-20 absolute top-1 left-1 cursor-pointer rounded-md p-1 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-indigo-500"
             >
               {lockedColors[index] ? (
                 <Lock className="h-4 w-4 text-white" />
@@ -194,7 +196,7 @@ function ColorPallete() {
 
       {description && (
         <div className="w-full max-w-2xl rounded-lg bg-slate-800 p-6 text-center text-white shadow-md shadow-teal-400">
-          <h2 className="mb-2 text-2xl font-bold">Deskripsi Palet</h2>
+          <h2 className="mb-2 text-3xl font-bold">Deskripsi Palet</h2>
           <p className="mb-4 text-justify">
             <strong className="mb-6">Suasana:</strong>
             <br />

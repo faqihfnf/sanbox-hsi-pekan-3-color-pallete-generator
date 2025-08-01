@@ -125,12 +125,12 @@ PENTING:
 - Jangan tambahkan teks apapun selain JSON`;
 
     const completion = await openai.chat.completions.create({
-      model: "mistralai/mistral-7b-instruct:free",
+      model: "moonshotai/kimi-k2:free",
       messages: [
         {
           role: "system",
           content:
-            "You are a color expert. Always respond with valid JSON only. No explanations, no markdown, just pure JSON.",
+            "You are a color expert. Always respond with valid JSON only. No explanations, no markdown, just pure JSON",
         },
         {
           role: "user",
@@ -138,7 +138,7 @@ PENTING:
         },
       ],
       temperature: 0.7,
-      max_tokens: 500,
+      max_tokens: 1000,
     });
 
     const raw = completion.choices[0].message.content || "";
